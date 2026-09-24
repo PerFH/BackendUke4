@@ -41,15 +41,17 @@ class Model
 
     public int groupByOperator(string operatorCompany)
     {
+        var operatorCompanies = database.Incidents.Select(i => i.operatorCompany);
         int operatorCount = database.Incidents.Count(i => i.operatorCompany == operatorCompany);
-        userInterface.groupByOperatorMessage(operatorCount);
+        userInterface.groupByOperatorMessage(operatorCompany, operatorCount);
         return operatorCount;
     }
 
     public int groupByModel(string aircraftModel)
-    {
+    {   
+        var aircraftModels = database.Incidents.Select(i => i.aircraftModel);
         int modelCount = database.Incidents.Count(i => i.aircraftModel == aircraftModel);
-        userInterface.groupByModelMessage(modelCount);
+        userInterface.groupByModelMessage(aircraftModel, modelCount);
         return modelCount;
     }
 }

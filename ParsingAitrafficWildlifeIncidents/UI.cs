@@ -25,14 +25,14 @@ public class UserInterface
         Console.WriteLine($"The amount of incidents on {selectedDay}/{selectedMonth}/{selectedYear} was {dayCount}");
     }
 
-    public void groupByOperatorMessage(int operatorCount)
+    public void groupByOperatorMessage(string operatorCompany, int operatorCount)
     {
-
+        Console.WriteLine($"There were {operatorCount} incidents involving {operatorCompany}");
     }
 
-    public void groupByModelMessage(int modelCount)
+    public void groupByModelMessage(string aircraftModel, int modelCount)
     {
-
+        Console.WriteLine($"There were {modelCount} incidents involving a {aircraftModel}");
     }
 
     public void errorMessage()
