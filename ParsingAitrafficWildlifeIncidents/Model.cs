@@ -1,7 +1,8 @@
 using System.Security.Cryptography.X509Certificates;
 
 class Model
-{   UserInterface userInterface;
+{
+    UserInterface userInterface;
     Database database;
 
     public Model(Database database, UserInterface userInterface)
@@ -32,26 +33,42 @@ class Model
     }
     public int groupByDay(int incidentYear, int incidentMonth, int incidentDay)
     {
-        int dayCount = database.Incidents.Count(i => i.incidentYear == incidentYear 
-                                                && i.incidentMonth == incidentMonth 
+        int dayCount = database.Incidents.Count(i => i.incidentYear == incidentYear
+                                                && i.incidentMonth == incidentMonth
                                                 && i.incidentDay == incidentDay);
         userInterface.groupByDayMessage(incidentYear, incidentMonth, incidentDay, dayCount);
         return dayCount;
     }
 
-    public int groupByOperator(string operatorCompany)
+    public List<string?> getOperatorCompanies()
     {
-        var operatorCompanies = database.Incidents.Select(i => i.operatorCompany).Distinct();
-        int operatorCount = database.Incidents.Count(i => i.operatorCompany == operatorCompany);
-        userInterface.groupByOperatorMessage(operatorCompany, operatorCount);
-        return operatorCount;
+        return database.Incidents.Select(
+            i => i.operatorCompany).Distinct().OrderBy(i => i).ToList();
     }
 
-    public int groupByModel(string aircraftModel)
-    {   
-        var aircraftModels = database.Incidents.Select(i => i.aircraftModel).Distinct();
+    public void groupByOperator()
+    {
+        foreach (string? operatorCompany in getOperatorCompanies())
+        {
+            
+        int operatorCount = database.Incidents.Count(i => i.operatorCompany == operatorCompany);
+        userInterface.groupByOperatorMessage(operatorCompany, operatorCount);
+        }
+    }
+
+    public List<string?> getAircraftModels()
+    {
+        return database.Incidents.Select(
+            i => i.aircraftModel).Distinct().OrderBy(i => i).ToList();
+    }
+
+    public void groupByModel()
+    {
+        foreach (string? aircraftModel in getAircraftModels())
+        {
+            
         int modelCount = database.Incidents.Count(i => i.aircraftModel == aircraftModel);
         userInterface.groupByModelMessage(aircraftModel, modelCount);
-        return modelCount;
+        }
     }
 }

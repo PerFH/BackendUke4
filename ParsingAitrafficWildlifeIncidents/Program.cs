@@ -14,12 +14,11 @@ model.sum();
 int incidentYear = 2010;
 int incidentMonth = 3;
 int incidentDay = 4;
-string operatorCompany = "UNKNOWN";
-string aircraftModel = "DC-9";
+var operatorCompanies = model.getOperatorCompanies();
 model.groupByYear(incidentYear);
 model.groupByMonth(incidentYear, incidentMonth);
 model.groupByDay(incidentYear, incidentMonth, incidentDay);
-model.groupByOperator(operatorCompany);
-model.groupByModel(aircraftModel);
+model.groupByOperator();
+model.groupByModel();
     }
 }
