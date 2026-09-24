@@ -1,7 +1,14 @@
 class Database
 {
     private List<Incident> incidents = new List<Incident>();
-    public IReadOnlyList<Incident> Incidents { get; private set; }
+    public IReadOnlyList<Incident> Incidents
+    {
+        get
+        {
+            return incidents;
+        }
+    }
+
 
     public bool fileExists
     {
@@ -27,17 +34,17 @@ class Database
             incident.operatorCompany = data[5];
             incident.aircraftModel = data[6];
             incidents.Add(incident);
-            Console.WriteLine($"Incident date: {incident.incidentDay}/{incident.incidentMonth}/{incident.incidentYear} Operator: {incident.operatorCompany} Plane model: {incident.aircraftModel}");
+            //Console.WriteLine($"Incident date: {incident.incidentDay}/{incident.incidentMonth}/{incident.incidentYear} Operator: {incident.operatorCompany} Plane model: {incident.aircraftModel}");
         }
     }
 
 }
-    public class Incident
+public class Incident
 {
-public int incidentYear { get; set; }
-public int incidentMonth { get; set ;}
-public int incidentDay { get; set; }
-public string? operatorCompany { get; set;}
-public string? aircraftModel { get; set; }
+    public int incidentYear { get; set; }
+    public int incidentMonth { get; set; }
+    public int incidentDay { get; set; }
+    public string? operatorCompany { get; set; }
+    public string? aircraftModel { get; set; }
 }
 
