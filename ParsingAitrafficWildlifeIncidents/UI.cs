@@ -1,13 +1,20 @@
 public class UserInterface
 {
-    public void introMessage()
+    public void start()
     {
-       Console.WriteLine("Welcome, we are going to go through some airtraffic/wildlife statistics"); 
+       Console.WriteLine("Welcome! We are going to go through some airtraffic/wildlife statistics");
     }
-
-    public void sumMessage(int incidentCount)
+    public int mainMenu(int incidentCount)
     {
-        Console.WriteLine($"The total count of airtraffic/wildlife incidents in the time period 1990-2016 was {incidentCount}");
+       Console.WriteLine($"The total count of airtraffic/wildlife incidents in the time period 1990-2016 was {incidentCount}\n"
+        + "I can sort these for you:\n"
+        + "1. Sort incidents by year.\n"
+        + "2. Sort incidents by Aircraft operator(airline/company).\n"
+        + "3. Sort incidents by Aircraft Model.\n"
+        + "0. Exit program."
+        );
+        
+        return Console.ReadLine(mmChoice);
     }
 
     public void groupByYearMessage(int selectedYear, int yearCount)

@@ -6,19 +6,18 @@ class Program
     {
 Console.WriteLine("Hello, World!");
 Database dataBase = new Database();
-UserInterface userInterface = new UserInterface();
-Model model = new Model(dataBase, userInterface);
+Model model = new Model(dataBase);
 
 dataBase.populateList();
 model.sum();
 int incidentYear = 2010;
 int incidentMonth = 3;
 int incidentDay = 4;
-var operatorCompanies = model.getOperatorCompanies();
+//var operatorCompanies = model.getOperatorCompanies();
 model.groupByYear(incidentYear);
 model.groupByMonth(incidentYear, incidentMonth);
 model.groupByDay(incidentYear, incidentMonth, incidentDay);
-model.groupByOperator();
-model.groupByModel();
+model.top10Operators();
+model.top10Models();
     }
 }
