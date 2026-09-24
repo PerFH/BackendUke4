@@ -8,8 +8,8 @@
         -Del etter årstall
             -spør om bruker vil sjekke måneder i et spesielt årstall, eller tilbake til MM
                 - spør vidre om bruker vil sjekke dagene i måneden, eller tilbake til MM
-        - Del inn etter operator(flyselskap)
-        - Del inn etter flymodell
+        - Del inn etter operator(flyselskap), gi bruker en liste med de forskjellige, og total incidents pr operator
+        - Del inn etter flymodell, gi bruker en liste med de forskjellige modellene, og total incidents pr model
     - Spør bruker om den ønsker å undersøke statistikken fra et annet aspekt
 
 ## Pseudokode
